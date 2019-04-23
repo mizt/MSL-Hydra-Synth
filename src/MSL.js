@@ -12,9 +12,9 @@ var output = function(uid) {
 		getTexture:function() {},
 		renderPasses:function(glsl) {
 			
-			
 			require("fs").writeFileSync("./assets/s"+this.index+".metal",glsl[0].frag);
 			require("fs").writeFileSync("./assets/u"+this.index+".json",stringifyWithFunctions(glsl[0].uniforms));
+			
 		}
 	};
 } 
