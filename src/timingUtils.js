@@ -37,16 +37,16 @@ function createFades (numFades) {
 
   // to do: put this code somewhere else
   gain.forEach((gain, index) => {
-    window['f'+index] = fade(index)
+    global['f'+index] = fade(index)
   })
 
-  window.fadeIn = (index, _mult) => {
+  global.fadeIn = (index, _mult) => {
   	gain[index] = {
   		progress: 0, dir: 1, mult: _mult ? _mult : 1
   	}
   }
   //
-  window.fadeOut = (index, _mult) => {
+  global.fadeOut = (index, _mult) => {
   	gain[index] = {
   		progress: 0, dir: -1, mult: _mult ? _mult : 1
   	}
