@@ -1094,10 +1094,8 @@ float _noise(vec3 v){
   vec4 K = vec4(0.0, -1.0 / 3.0, 2.0 / 3.0, -1.0);
   vec4 p = mix(vec4(c.bg, K.wz), vec4(c.gb, K.xy), step(c.b, c.g));
   vec4 q = mix(vec4(p.xyw, c.r), vec4(c.r, p.yzx), step(p.x, c.r));
-
   float d = q.x - min(q.w, q.y);
-  float e = 0; // 1.0e-10;
-  return vec3(abs(q.z + (q.w - q.y) / (6.0 * d + e)), d / (q.x + e), q.x);
+  return vec3(abs(q.z+((d==0.0)?1.0:((q.w-q.y)/(6.0*d)))), (q.x==0.0)?3.402823466e+38:(d/q.x), q.x);
 }
 `
   },
