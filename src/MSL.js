@@ -5,21 +5,19 @@ function stringifyWithFunctions(object) {
 	},"\t");
 };
 
-var output = function(uid) {
+var Output = function(uid) {
 	global["o"+uid] = {
 		index:uid,
 		uniforms:{},
 		getTexture:function() {},
-		renderPasses:function(glsl) {
-			
+		renderPasses:function(glsl) {			
 			require("fs").writeFileSync("./assets/s"+this.index+".metal",glsl[0].frag);
 			require("fs").writeFileSync("./assets/u"+this.index+".json",stringifyWithFunctions(glsl[0].uniforms));
-			
 		}
 	};
 } 
 
-output(0);
+Output(0);
 
 const gen = new (require('./MSLGeneratorFactory.js'))(o0)
 global.generator = gen
