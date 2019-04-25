@@ -26,7 +26,7 @@ The following two files are export.
 
 ### Play
 
-[Hydra-Synth-Player]()
+[Hydra-Synth-Player](https://github.com/mizt/MSL-Hydra-Synth-Player)
 
 
 ### Test
