@@ -193,3 +193,6 @@ https://ojack.github.io
 	  .mult(osc(40, 0.03).thresh(0.4).rotate(0, -0.02))
 	  .modulateRotate(osc(20, 0).thresh(0.3, 0.6), () => 0.1 + mouse.x * 0.002)
 	  .out(o0)
+
+### See also
+https://note.mu/mizt/n/n5540821c2671
