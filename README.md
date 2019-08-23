@@ -14,13 +14,13 @@ Export [ojack](https://github.com/ojack) / [hydra-synth](https://github.com/ojac
 
 The following two files are export.
 
-* ./assts/u0.json
-* ./assts/s0.metal
+* ./assets/u0.json
+* ./assets/s0.metal
 
 
 ### Build MSL
 
-	$ cd ./assts
+	$ cd ./assets
 	$ xcrun -sdk macosx metal -c s0.metal -o s0.air; xcrun -sdk macosx metallib s0.air -o s0.metallib
 
 
