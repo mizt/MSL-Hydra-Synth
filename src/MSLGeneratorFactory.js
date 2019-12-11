@@ -69,17 +69,20 @@ function formatArguments (userArgs, defaultArgs) {
     }
     // if input is a texture, set unique name for uniform
     if (input.type === 'texture') {
+      
+      //console.log(typedArg);
       // typedArg.tex = typedArg.value
       var x = typedArg.value
       typedArg.value = ""
-      typedArg.name = "args.o0"
+      typedArg.name = x.name;
     } else {
       // if passing in a texture reference, when function asks for vec4, convert to vec4
       if (typedArg.value.getTexture && input.type === 'vec4') {
-        var x1 = typedArg.value
-        typedArg.value = src(x1)
+        
+        var x = typedArg.value
+        typedArg.value = src(x)
         typedArg.isUniform = false
-        typedArg.name = "args.o0"
+        typedArg.name = x.name;
       }
       else {
         if(input.name=="time") {
@@ -244,8 +247,8 @@ struct FragmentShaderArguments {
   device float2 *mouse[[id(2)]];
   texture2d<float> o0[[id(3)]];
   texture2d<float> o1[[id(4)]];
-  texture2d<float> o2[[id(5)]];
-  texture2d<float> o3[[id(6)]];
+  texture2d<float> s0[[id(5)]];
+  texture2d<float> s1[[id(6)]];
 ${pass.uniforms.map((uniform) => {
         if(uniform.type=="texture") {
           return '';
@@ -372,6 +375,9 @@ Generator.prototype.out = function (_output) {
   var tmp = this.glsl(output);
   
   delete tmp[0].uniforms["args.o0"];
+  delete tmp[0].uniforms["args.o1"];
+  delete tmp[0].uniforms["args.s0"];
+  delete tmp[0].uniforms["args.s1"];
   delete tmp[0].uniforms.time;
   delete tmp[0].uniforms.resolution;
   

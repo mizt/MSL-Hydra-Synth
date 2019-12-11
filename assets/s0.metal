@@ -27,8 +27,8 @@ struct FragmentShaderArguments {
   device float2 *mouse[[id(2)]];
   texture2d<float> o0[[id(3)]];
   texture2d<float> o1[[id(4)]];
-  texture2d<float> o2[[id(5)]];
-  texture2d<float> o3[[id(6)]];
+  texture2d<float> s0[[id(5)]];
+  texture2d<float> s1[[id(6)]];
   device float *frequency_7[[id(7)]];
   device float *sync_8[[id(8)]];
   device float *offset_9[[id(9)]];
