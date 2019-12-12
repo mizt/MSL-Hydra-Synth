@@ -260,7 +260,6 @@ float _noise(vec3 v){
       }
     ],
     glsl: `vec4 src(vec2 _st, texture2d<float> _tex){
-  //  vec2 uv = gl_FragCoord.xy/vec2(1280., 720.);
   return _tex.sample(_sampler,fract(_st));
 }
 `
@@ -597,6 +596,27 @@ float _noise(vec3 v){
   return fract(st);
 }
 `
+  },
+  clamp: {
+    type: 'coord',
+    inputs: [
+      {
+        name: 'min',
+        type: 'float',
+        default: 0.0
+      },
+      {
+        name: 'max',
+        type: 'float',
+        default: 1.0
+      }
+    ],
+    glsl: '',
+    example: `
+      osc(5,0,1)
+        .scale(0.5)
+        .clamp(0.0,1.0)
+        .out(o0)`,
   },
   kaleid: {
     type: 'coord',
