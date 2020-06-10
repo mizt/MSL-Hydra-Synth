@@ -13,19 +13,21 @@ global["o0"] = {
 	uniforms:{},
 	getTexture:function() {},
 	renderPasses:function(glsl) {			
-		require("fs").writeFileSync(DIR+"s0.metal",glsl[0].frag);
+		require("fs").writeFileSync(DIR+"o0.metal",glsl[0].frag);
 		require("fs").writeFileSync(DIR+"u0.json",stringifyWithFunctions(glsl[0].uniforms));
 		if(BUILD) {
-			require("child_process").execSync("xcrun -sdk macosx metal -c "+DIR+"s0.metal -o "+DIR+"s0.air; xcrun -sdk macosx metallib "+DIR+"s0.air -o "+DIR+"s0.metallib");
+			require("child_process").execSync("xcrun -sdk macosx metal -c "+DIR+"o0.metal -o "+DIR+"o0.air; xcrun -sdk macosx metallib "+DIR+"o0.air -o "+DIR+"o0.metallib");
 		}
 	}
 };
 	
-global["s0"] = {
-	name:"args.s0",
-	uniforms:{},
-	getTexture:function() {},
-};
+for(let k=0; k<4; k++) {
+	global["s"+k] = {
+		name:"args.s"+k,
+		uniforms:{},
+		getTexture:function() {},
+	};
+}
 
 const gen = new (require('./MSLGeneratorFactory.js'))(o0)
 global.generator = gen

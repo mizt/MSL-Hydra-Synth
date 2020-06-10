@@ -96,7 +96,7 @@ function formatArguments (userArgs, defaultArgs) {
         }
         else {
           if(typedArg.isUniform) {
-            typedArg.name = input.name +"_"+ (7+counter.get())
+            typedArg.name = input.name +"_"+ (11+counter.get())
             counter.increment();
           }
           else {
@@ -249,8 +249,12 @@ struct FragmentShaderArguments {
   device float2 *mouse[[id(2)]];
   texture2d<float> o0[[id(3)]];
   texture2d<float> o1[[id(4)]];
-  texture2d<float> s0[[id(5)]];
-  texture2d<float> s1[[id(6)]];
+  texture2d<float> o2[[id(5)]];
+  texture2d<float> o3[[id(6)]];
+  texture2d<float> s0[[id(7)]];
+  texture2d<float> s1[[id(8)]];
+  texture2d<float> s2[[id(9)]];
+  texture2d<float> s3[[id(10)]];
 ${pass.uniforms.map((uniform) => {
         if(uniform.type=="texture") {
           return '';

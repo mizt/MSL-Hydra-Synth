@@ -10,18 +10,17 @@ Export [ojack](https://github.com/ojack) / [hydra-synth](https://github.com/ojac
 ### Build
 	
 	$node example_11.js 
-	
 
 The following two files are export.
 
 * ./assets/u0.json
-* ./assets/s0.metal
+* ./assets/o0.metal
 
 
 ### Build MSL
 
 	$ cd ./assets
-	$ xcrun -sdk macosx metal -c s0.metal -o s0.air; xcrun -sdk macosx metallib s0.air -o s0.metallib
+	$ xcrun -sdk macosx metal -c o0.metal -o o0.air; xcrun -sdk macosx metallib o0.air -o o0.metallib
 
 
 ### Play

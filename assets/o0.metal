@@ -1,3 +1,5 @@
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wunused-variable"
 #include <metal_stdlib>
 using namespace metal;
 
@@ -27,24 +29,12 @@ struct FragmentShaderArguments {
   device float2 *mouse[[id(2)]];
   texture2d<float> o0[[id(3)]];
   texture2d<float> o1[[id(4)]];
-  texture2d<float> s0[[id(5)]];
-  texture2d<float> s1[[id(6)]];
-  device float *frequency_7[[id(7)]];
-  device float *sync_8[[id(8)]];
-  device float *offset_9[[id(9)]];
-  device float *nSides_10[[id(10)]];
-  device float *r_11[[id(11)]];
-  device float *g_12[[id(12)]];
-  device float *b_13[[id(13)]];
-  device float *a_14[[id(14)]];
-  device float *angle_15[[id(15)]];
-  device float *speed_16[[id(16)]];
-  device float *amount_17[[id(17)]];
-  device float *amount_18[[id(18)]];
-  device float *xMult_19[[id(19)]];
-  device float *yMult_20[[id(20)]];
-  device float *offsetX_21[[id(21)]];
-  device float *offsetY_22[[id(22)]];
+  texture2d<float> o2[[id(5)]];
+  texture2d<float> o3[[id(6)]];
+  texture2d<float> s0[[id(7)]];
+  texture2d<float> s1[[id(8)]];
+  texture2d<float> s2[[id(9)]];
+  texture2d<float> s3[[id(10)]];
 };
     
 vertex VertInOut vertexShader(constant float4 *pos[[buffer(0)]],constant packed_float2  *texcoord[[buffer(1)]],uint vid[[vertex_id]]) {
@@ -127,11 +117,9 @@ float _noise(vec3 v){
   return 42.0 * dot( m*m, vec4( dot(p0,x0), dot(p1,x1),
     dot(p2,x2), dot(p3,x3) ) );
 }
-
 vec4 noise(vec2 st, float scale, float offset, float time){
   return vec4(vec3(_noise(vec3(st*scale, offset*time))), 1.0);
 }
-
 vec4 voronoi(vec2 st, float scale, float speed, float blending, float time) {
   vec3 color = vec3(.0);
 
@@ -166,7 +154,6 @@ vec4 voronoi(vec2 st, float scale, float speed, float blending, float time) {
   color *= 1.0 - blending*m_dist;
   return vec4(color, 1.0);
 }
-
 vec4 osc(vec2 _st, float freq, float sync, float offset, float time){
   vec2 st = _st;
   float r = sin((st.x-offset/freq+time*sync)*freq)*0.5  + 0.5;
@@ -174,7 +161,6 @@ vec4 osc(vec2 _st, float freq, float sync, float offset, float time){
   float b = sin((st.x+offset/freq+time*sync)*freq)*0.5  + 0.5;
   return vec4(r, g, b, 1.0);
 }
-
 vec4 shape(vec2 _st, float sides, float radius, float smoothing){
   vec2 st = _st * 2. - 1.;
   // Angle and radius from the current pixel
@@ -183,20 +169,15 @@ vec4 shape(vec2 _st, float sides, float radius, float smoothing){
   float d = cos(floor(.5+a/r)*r-a)*length(st);
   return vec4(vec3(1.0-smoothstep(radius,radius + smoothing,d)), 1.0);
 }
-
 vec4 gradient(vec2 _st, float speed, float time) {
   return vec4(_st, sin(time*speed), 1.0);
 }
-
 vec4 src(vec2 _st, texture2d<float> _tex){
-  //  vec2 uv = gl_FragCoord.xy/vec2(1280., 720.);
   return _tex.sample(_sampler,fract(_st));
 }
-
 vec4 solid(vec2 uv, float _r, float _g, float _b, float _a){
   return vec4(_r, _g, _b, _a);
 }
-
 vec2 rotate(vec2 st, float _angle, float speed, float time){
   vec2 xy = st - vec2(0.5);
   float angle = _angle + speed *time;
@@ -204,19 +185,16 @@ vec2 rotate(vec2 st, float _angle, float speed, float time){
   xy += 0.5;
   return xy;
   }
-
 vec2 scale(vec2 st, float amount, float xMult, float yMult, float offsetX, float offsetY){
   vec2 xy = st - vec2(offsetX, offsetY);
   xy*=(1.0/vec2(amount*xMult, amount*yMult));
   xy+=vec2(offsetX, offsetY);
   return xy;
 }
-
 vec2 pixelate(vec2 st, float pixelX, float pixelY){
   vec2 xy = vec2(pixelX, pixelY);
   return (floor(st * xy) + 0.5)/xy;
 }
-
 vec4 posterize(vec4 c, float bins, float gamma){
   vec4 c2 = pow(c, vec4(gamma));
   c2 *= vec4(bins);
@@ -225,7 +203,6 @@ vec4 posterize(vec4 c, float bins, float gamma){
   c2 = pow(c2, vec4(1.0/gamma));
   return vec4(c2.xyz, c.a);
 }
-
 vec4 shift(vec4 c, float r, float g, float b, float a){
   vec4 c2 = vec4(c);
   c2.r = fract(c2.r + r);
@@ -234,49 +211,42 @@ vec4 shift(vec4 c, float r, float g, float b, float a){
   c2.a = fract(c2.a + a);
   return vec4(c2.rgba);
 }
-
 vec2 repeat(vec2 _st, float repeatX, float repeatY, float offsetX, float offsetY){
   vec2 st = _st * vec2(repeatX, repeatY);
   st.x += step(1., mod(st.y,2.0)) * offsetX;
   st.y += step(1., mod(st.x,2.0)) * offsetY;
   return fract(st);
 }
-
 vec2 modulateRepeat(vec2 _st, vec4 c1, float repeatX, float repeatY, float offsetX, float offsetY){
   vec2 st = _st * vec2(repeatX, repeatY);
   st.x += step(1., mod(st.y,2.0)) + c1.r * offsetX;
   st.y += step(1., mod(st.x,2.0)) + c1.g * offsetY;
   return fract(st);
 }
-
 vec2 repeatX(vec2 _st, float reps, float offset){
   vec2 st = _st * vec2(reps, 1.0);
   // float f = mod(_st.y,2.0);
   st.y += step(1., mod(st.x,2.0))* offset;
   return fract(st);
 }
-
 vec2 modulateRepeatX(vec2 _st, vec4 c1, float reps, float offset){
   vec2 st = _st * vec2(reps, 1.0);
   // float f = mod(_st.y,2.0);
   st.y += step(1., mod(st.x,2.0)) + c1.r * offset;
   return fract(st);
 }
-
 vec2 repeatY(vec2 _st, float reps, float offset){
   vec2 st = _st * vec2(1.0, reps);
   // float f = mod(_st.y,2.0);
   st.x += step(1., mod(st.y,2.0))* offset;
   return fract(st);
 }
-
 vec2 modulateRepeatY(vec2 _st, vec4 c1, float reps, float offset){
   vec2 st = _st * vec2(reps, 1.0);
   // float f = mod(_st.y,2.0);
   st.x += step(1., mod(st.y,2.0)) + c1.r * offset;
   return fract(st);
 }
-
 vec2 kaleid(vec2 st, float nSides){
   st -= 0.5;
   float r = length(st);
@@ -286,7 +256,6 @@ vec2 kaleid(vec2 st, float nSides){
   a = abs(a-pi/nSides/2.);
   return r*vec2(cos(a), sin(a));
 }
-
 vec2 modulateKaleid(vec2 st, vec4 c1, float nSides){
   st -= 0.5;
   float r = length(st);
@@ -296,64 +265,51 @@ vec2 modulateKaleid(vec2 st, vec4 c1, float nSides){
   a = abs(a-pi/nSides/2.);
   return (c1.r+r)*vec2(cos(a), sin(a));
 }
-
 vec2 scrollX(vec2 st, float amount, float speed, float time){
   st.x += amount + time*speed;
   return fract(st);
 }
-
 vec2 modulateScrollX(vec2 st, vec4 c1, float amount, float speed, float time){
   st.x += c1.r*amount + time*speed;
   return fract(st);
 }
-
 vec2 scrollY(vec2 st, float amount, float speed, float time){
   st.y += amount + time*speed;
   return fract(st);
 }
-
 vec2 modulateScrollY(vec2 st, vec4 c1, float amount, float speed, float time){
   st.y += c1.r*amount + time*speed;
   return fract(st);
 }
-
 vec4 add(vec4 c0, vec4 c1, float amount){
   return (c0+c1)*amount + c0*(1.0-amount);
 }
-
 vec4 layer(vec4 c0, vec4 c1){
   return vec4(mix(c0.rgb, c1.rgb, c1.a), c0.a+c1.a);
 }
-
 vec4 blend(vec4 c0, vec4 c1, float amount){
   return c0*(1.0-amount)+c1*amount;
 }
-
 vec4 mult(vec4 c0, vec4 c1, float amount){
   return c0*(1.0-amount)+(c0*c1)*amount;
 }
-
 vec4 diff(vec4 c0, vec4 c1){
   return vec4(abs(c0.rgb-c1.rgb), max(c0.a, c1.a));
 }
-
 vec2 modulate(vec2 st, vec4 c1, float amount){
   // return fract(st+(c1.xy-0.5)*amount);
   return st + c1.xy*amount;
 }
-
 vec2 modulateScale(vec2 st, vec4 c1, float multiple, float offset){
   vec2 xy = st - vec2(0.5);
   xy*=(1.0/vec2(offset + multiple*c1.r, offset + multiple*c1.g));
   xy+=vec2(0.5);
   return xy;
 }
-
 vec2 modulatePixelate(vec2 st, vec4 c1, float multiple, float offset){
   vec2 xy = vec2(offset + c1.x*multiple, offset + c1.y*multiple);
   return (floor(st * xy) + 0.5)/xy;
 }
-
 vec2 modulateRotate(vec2 st, vec4 c1, float multiple, float offset){
   vec2 xy = st - vec2(0.5);
   float angle = offset + c1.x * multiple;
@@ -361,41 +317,32 @@ vec2 modulateRotate(vec2 st, vec4 c1, float multiple, float offset){
   xy += 0.5;
   return xy;
 }
-
 vec2 modulateHue(vec2 st, vec4 c1, float amount, vec2 resolution){
   return st + (vec2(c1.g - c1.r, c1.b - c1.g) * amount * 1.0/resolution.xy);
 }
-
 vec4 invert(vec4 c0, float amount){
   return vec4((1.0-c0.rgb)*amount + c0.rgb*(1.0-amount), c0.a);
 }
-
 vec4 contrast(vec4 c0, float amount) {
       vec4 c = (c0-vec4(0.5))*vec4(amount) + vec4(0.5);
       return vec4(c.rgb, c0.a);
     }
-    
-vec4 brightness(vec4 c0, float amount){
+    vec4 brightness(vec4 c0, float amount){
   return vec4(c0.rgb + vec3(amount), c0.a);
 }
-
 float luminance(vec3 rgb){
       const vec3 W = vec3(0.2125, 0.7154, 0.0721);
       return dot(rgb, W);
-    }
-vec4 mask(vec4 c0, vec4 c1){
+    }vec4 mask(vec4 c0, vec4 c1){
       float a = luminance(c1.rgb);
       return vec4(c0.rgb*a, a);
-    }
-vec4 luma(vec4 c0, float threshold, float tolerance){
+    }vec4 luma(vec4 c0, float threshold, float tolerance){
   float a = smoothstep(threshold-tolerance, threshold+tolerance, luminance(c0.rgb));
   return vec4(c0.rgb*a, a);
 }
-
 vec4 thresh(vec4 c0, float threshold, float tolerance){
   return vec4(vec3(smoothstep(threshold-tolerance, threshold+tolerance, luminance(c0.rgb))), c0.a);
 }
-
 vec4 color(vec4 c0, float _r, float _g, float _b, float _a){
   vec4 c = vec4(_r, _g, _b, _a);
   vec4 pos = step(0.0, c); // detect whether negative
@@ -404,7 +351,6 @@ vec4 color(vec4 c0, float _r, float _g, float _b, float _a){
   // if < 0 return (1.0-r) * c0
   return vec4(mix((1.0-c0)*abs(c), c*c0, pos));
 }
-
 vec3 _rgbToHsv(vec3 c){
   vec4 K = vec4(0.0, -1.0 / 3.0, 2.0 / 3.0, -1.0);
   vec4 p = mix(vec4(c.bg, K.wz), vec4(c.gb, K.xy), step(c.b, c.g));
@@ -412,26 +358,22 @@ vec3 _rgbToHsv(vec3 c){
   float d = q.x - min(q.w, q.y);
   return vec3(abs(q.z+((d==0.0)?1.0:((q.w-q.y)/(6.0*d)))), (q.x==0.0)?3.402823466e+38:(d/q.x), q.x);
 }
-
 vec3 _hsvToRgb(vec3 c){
   vec4 K = vec4(1.0, 2.0 / 3.0, 1.0 / 3.0, 3.0);
   vec3 p = abs(fract(c.xxx + K.xyz) * 6.0 - K.www);
   return c.z * mix(K.xxx, clamp(p - K.xxx, 0.0, 1.0), c.y);
 }
-
 vec4 saturate(vec4 c0, float amount){
   const vec3 W = vec3(0.2125, 0.7154, 0.0721);
   vec3 intensity = vec3(dot(c0.rgb, W));
   return vec4(mix(intensity, c0.rgb, amount), c0.a);
 }
-
 vec4 hue(vec4 c0, float hue){
   vec3 c = _rgbToHsv(c0.rgb);
   c.r += hue;
   //  c.r = fract(c.r);
   return vec4(_hsvToRgb(c), c0.a);
 }
-
 vec4 colorama(vec4 c0, float amount){
   vec3 c = _rgbToHsv(c0.rgb);
   c += vec3(amount);
@@ -439,7 +381,6 @@ vec4 colorama(vec4 c0, float amount){
   c = fract(c);
   return vec4(c, c0.a);
 }
-
 
 fragment float4 fragmentShader(VertInOut inFrag[[stage_in]],constant FragmentShaderArguments &args[[buffer(0)]]) {
     
@@ -450,22 +391,7 @@ fragment float4 fragmentShader(VertInOut inFrag[[stage_in]],constant FragmentSha
   vec4 c = vec4(1, 0, 0, 1);
   vec2 st = gl_FragCoord.xy/resolution.xy;    
      
-  float frequency_7 = args.frequency_7[0];
-  float sync_8 = args.sync_8[0];
-  float offset_9 = args.offset_9[0];
-  float nSides_10 = args.nSides_10[0];
-  float r_11 = args.r_11[0];
-  float g_12 = args.g_12[0];
-  float b_13 = args.b_13[0];
-  float a_14 = args.a_14[0];
-  float angle_15 = args.angle_15[0];
-  float speed_16 = args.speed_16[0];
-  float amount_17 = args.amount_17[0];
-  float amount_18 = args.amount_18[0];
-  float xMult_19 = args.xMult_19[0];
-  float yMult_20 = args.yMult_20[0];
-  float offsetX_21 = args.offsetX_21[0];
-  float offsetY_22 = args.offsetY_22[0];
         
-  return color(osc(kaleid(rotate(modulate(scale(st, amount_18, xMult_19, yMult_20, offsetX_21, offsetY_22), src(scale(st, amount_18, xMult_19, yMult_20, offsetX_21, offsetY_22), args.o0), amount_17), angle_15, speed_16, time), nSides_10), frequency_7, sync_8, offset_9, time), r_11, g_12, b_13, a_14);
+  return src(st, args.s0);
 }
+#pragma clang diagnostic pop
