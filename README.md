@@ -193,5 +193,10 @@ https://ojack.github.io
 	  .modulateRotate(osc(20, 0).thresh(0.3, 0.6), () => 0.1 + mouse.x * 0.002)
 	  .out(o0)
 
+### Extension
+
+`slider(value,min,max)`
+[→](https://github.com/mizt/MSL-Hydra-Synth-Player#extension)
+
 ### See also
 https://note.mu/mizt/n/n5540821c2671
