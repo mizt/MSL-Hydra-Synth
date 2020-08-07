@@ -1,6 +1,8 @@
-var BUILD = true;
-var DIR = "./assets/";
+const BUILD = true;
+const DIR = "./assets/";
 const OS = "macosx"; // macosx, iphoneos, iphonesimulator
+
+slider=(value,min,max)=>"slider("+value+","+min+","+max+")";
 
 function stringifyWithFunctions(object) {
 	return JSON.stringify(object,(k,v) => {
@@ -14,8 +16,8 @@ global["o0"] = {
 	uniforms:{},
 	getTexture:function() {},
 	renderPasses:function(glsl) {			
-		require("fs").writeFileSync(DIR+"s0.metal",glsl[0].frag);
 		require("fs").writeFileSync(DIR+"u0.json",stringifyWithFunctions(glsl[0].uniforms));
+		require("fs").writeFileSync(DIR+"s0.metal",glsl[0].frag);
 		if(BUILD) {
 			require("child_process").execSync("xcrun -sdk "+OS+" metal -c "+DIR+"s0.metal -o "+DIR+"s0.air; xcrun -sdk "+OS+" metallib "+DIR+"s0.air -o "+DIR+"s0.metallib");
 		}

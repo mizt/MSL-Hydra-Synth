@@ -7,20 +7,33 @@ Export [ojack](https://github.com/ojack) / [hydra-synth](https://github.com/ojac
 * Source buffer is not supported.
 * Number of output buffers available is currently one.
 
+### Architecture settings
+
+* `const OS = "macosx";`
+* `const OS = "iphoneos";`
+* `const OS = "iphonesimulator";`
+
+in `MSL.js`
+
+
+
+
+
 ### Build
 	
 	$node example_11.js 
+	
 
 The following two files are export.
 
 * ./assets/u0.json
-* ./assets/o0.metal
+* ./assets/s0.metal
 
 
 ### Build MSL
 
 	$ cd ./assets
-	$ xcrun -sdk macosx metal -c o0.metal -o o0.air; xcrun -sdk macosx metallib o0.air -o o0.metallib
+	$ xcrun -sdk macosx metal -c s0.metal -o s0.air; xcrun -sdk macosx metallib s0.air -o s0.metallib
 
 
 ### Play
@@ -193,10 +206,5 @@ https://ojack.github.io
 	  .modulateRotate(osc(20, 0).thresh(0.3, 0.6), () => 0.1 + mouse.x * 0.002)
 	  .out(o0)
 
-### Extension
-
-`slider(value,min,max)`
-[→](https://github.com/mizt/MSL-Hydra-Synth-Player#extension)
-
 ### See also
-https://note.mu/mizt/n/n5540821c2671
+[https://note.mu/mizt/n/n5540821c2671](https://note.mu/mizt/n/n5540821c2671)
