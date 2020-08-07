@@ -1,5 +1,6 @@
 var BUILD = true;
 var DIR = "./assets/";
+const OS = "macosx"; // macosx, iphoneos, iphonesimulator
 
 function stringifyWithFunctions(object) {
 	return JSON.stringify(object,(k,v) => {
@@ -13,10 +14,10 @@ global["o0"] = {
 	uniforms:{},
 	getTexture:function() {},
 	renderPasses:function(glsl) {			
-		require("fs").writeFileSync(DIR+"o0.metal",glsl[0].frag);
+		require("fs").writeFileSync(DIR+"s0.metal",glsl[0].frag);
 		require("fs").writeFileSync(DIR+"u0.json",stringifyWithFunctions(glsl[0].uniforms));
 		if(BUILD) {
-			require("child_process").execSync("xcrun -sdk macosx metal -c "+DIR+"o0.metal -o "+DIR+"o0.air; xcrun -sdk macosx metallib "+DIR+"o0.air -o "+DIR+"o0.metallib");
+			require("child_process").execSync("xcrun -sdk "+OS+" metal -c "+DIR+"s0.metal -o "+DIR+"s0.air; xcrun -sdk "+OS+" metallib "+DIR+"s0.air -o "+DIR+"s0.metallib");
 		}
 	}
 };
