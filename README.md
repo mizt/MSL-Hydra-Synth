@@ -43,7 +43,7 @@ The following two files are export.
 
 ### Test
 
-[example\_3](https://hydra-editor-v1.glitch.me/?sketch_id=example_3&code=JTJGJTJGJTIwYnklMjBPbGl2aWElMjBKYWNrJTBBJTBBb3NjKDIwJTJDJTIwMC4wMyUyQyUyMDEuNykua2FsZWlkKCkubXVsdChvc2MoMjAlMkMlMjAwLjAwMSUyQyUyMDApLnJvdGF0ZSgxLjU4KSkuYmxlbmQobzAlMkMlMjAwLjk0KS5tb2R1bGF0ZVNjYWxlKG9zYygxMCUyQyUyMDApJTJDLTAuMDMpLnNjYWxlKDAuOCUyQyUyMCgpJTIwJTNEJTNFJTIwKDEuMDUlMjAlMkIlMjAwLjElMjAqJTIwTWF0aC5zaW4oMC4wNSp0aW1lKSkpLm91dChvMCk=)
+[example\_3](https://hydra.ojack.xyz/?sketch_id=example_3)
 
 ![](./images/03.png "")
 
@@ -51,7 +51,7 @@ by Olivia Jack
 
 	osc(20, 0.03, 1.7).kaleid().mult(osc(20, 0.001, 0).rotate(1.58)).blend(o0, 0.94).modulateScale(osc(10, 0),-0.03).scale(0.8, () => (1.05 + 0.1 * Math.sin(0.05*time))).out(o0)
 
-[example\_4](https://hydra-editor-v1.glitch.me/?sketch_id=example_4&code=JTJGJTJGJTIwYnklMjBOZWxzb24lMjBWZXJhJTBBJTJGJTJGJTIwdHdpdHRlciUzQSUyMCU0MG5lbF9zb25vbG9naWElMEElMEFvc2MoOCUyQy0wLjUlMkMlMjAxKS5jb2xvcigtMS41JTJDJTIwLTEuNSUyQyUyMC0xLjUpLmJsZW5kKG8wKS5yb3RhdGUoLTAuNSUyQyUyMC0wLjUpLm1vZHVsYXRlKHNoYXBlKDQpLnJvdGF0ZSgwLjUlMkMlMjAwLjUpLnNjYWxlKDIpLnJlcGVhdFgoMiUyQyUyMDIpLm1vZHVsYXRlKG8wJTJDJTIwKCklMjAlM0QlM0UlMjBtb3VzZS54JTIwKiUyMDAuMDAwNSkucmVwZWF0WSgyJTJDJTIwMikpLm91dChvMCklMEElMEElMEElMEElMEElMEE=)
+[example\_4](https://hydra.ojack.xyz/?sketch_id=example_4)
 
 ![](./images/04.png "")
 
@@ -60,7 +60,7 @@ twitter: @nel\_sonologia
 
 	osc(8,-0.5, 1).color(-1.5, -1.5, -1.5).blend(o0).rotate(-0.5, -0.5).modulate(shape(4).rotate(0.5, 0.5).scale(2).repeatX(2, 2).modulate(o0, () => mouse.x * 0.0005).repeatY(2, 2)).out(o0)
 
-[example\_6](https://hydra-editor-v1.glitch.me/?sketch_id=example_6&code=JTJGJTJGJTIwYnklMjBEJUMzJUE5Ym9yYSUyMEZhbGxlaXJvcyUyMEdvbnphbGVzJTBBJTJGJTJGJTIwaHR0cHMlM0ElMkYlMkZ3d3cuZ29uemFsZXNkZWJvcmEuY29tJTJGJTBBJTBBb3NjKDUpLmFkZChub2lzZSg1JTJDJTIwMikpLmNvbG9yKDAlMkMlMjAwJTJDJTIwMykuY29sb3JhbWEoMC40KS5vdXQoKSUwQSUwQSUwQSUwQQ==)
+[example\_6](https://hydra.ojack.xyz/?sketch_id=example_6)
 
 ![](./images/06.png "")
 
@@ -69,7 +69,7 @@ https://www.gonzalesdebora.com/
 
 	osc(5).add(noise(5, 2)).color(0, 0, 3).colorama(0.4).out()
 
-[example\_10](https://hydra-editor-v1.glitch.me/?sketch_id=example_10&code=JTJGJTJGJTIwYnklMjBaYWNoJTIwS3JhbGwlMEElMkYlMkYlMjBodHRwJTNBJTJGJTJGemFjaGtyYWxsLm9ubGluZSUyRiUwQSUwQW9zYyglMjAyMTUlMkMlMjAwLjElMkMlMjAyJTIwKSUwQS5tb2R1bGF0ZSglMEElMjAlMjBvc2MoJTIwMiUyQyUyMC0wLjMlMkMlMjAxMDAlMjApJTBBJTIwJTIwLnJvdGF0ZSgxNSklMEEpJTBBLm11bHQoJTBBJTIwJTIwb3NjKCUyMDIxNSUyQyUyMC0wLjElMkMlMjAyKSUwQSUyMCUyMC5waXhlbGF0ZSglMjA1MCUyQyUyMDUwJTIwKSUwQSklMEEuY29sb3IoJTIwMC45JTJDJTIwMC4wJTJDJTIwMC45JTIwKSUwQS5tb2R1bGF0ZSglMEElMjAlMjBvc2MoJTIwNiUyQyUyMC0wLjElMjApJTBBJTIwJTIwLnJvdGF0ZSglMjA5JTIwKSUwQSklMEEuYWRkKCUwQSUyMCUyMG9zYyglMjAxMCUyQyUyMC0wLjklMkMlMjA5MDAlMjApJTBBJTIwJTIwLmNvbG9yKDElMkMwJTJDMSklMEEpJTBBLm11bHQoJTBBJTIwJTIwc2hhcGUoOTAwJTJDJTIwMC4yJTJDJTIwMSklMEElMjAlMjAubHVtYSgpJTBBJTIwJTIwLnJlcGVhdFgoMiklMEElMjAlMjAucmVwZWF0WSgyKSUwQSUyMCUyMC5jb2xvcmFtYSgxMCklMEEpJTBBLm1vZHVsYXRlKCUwQSUyMCUyMG9zYyglMjA5JTJDJTIwLTAuMyUyQyUyMDkwMCUyMCklMEElMjAlMjAucm90YXRlKCUyMDYlMjApJTBBKSUwQS5hZGQoJTBBJTIwJTIwb3NjKDQlMkMlMjAxJTJDJTIwOTApJTBBJTIwJTIwLmNvbG9yKDAuMiUyQzAlMkMxKSUwQSklMEEub3V0KCklMEE=)
+[example\_10](https://hydra.ojack.xyz/?sketch_id=example_10)
 
 ![](./images/10.png "")
 
@@ -111,7 +111,7 @@ http://zachkrall.online/
 	)
 	.out()
 
-[example\_11](https://hydra-editor-v1.glitch.me/?sketch_id=example_11&code=JTJGJTJGJTIwYnklMjBaYWNoJTIwS3JhbGwlMEElMkYlMkYlMjBodHRwJTNBJTJGJTJGemFjaGtyYWxsLm9ubGluZSUyRiUwQSUwQW9zYygxMCUyQyUyMDAuOSUyQyUyMDMwMCklMEEuY29sb3IoMC45JTJDJTIwMC43JTJDJTIwMC44KSUwQS5kaWZmKCUwQSUyMCUyMG9zYyg0NSUyQyUyMDAuMyUyQyUyMDEwMCklMEElMjAlMjAuY29sb3IoMC45JTJDJTIwMC45JTJDJTIwMC45KSUwQSUyMCUyMC5yb3RhdGUoMC4xOCklMEElMjAlMjAucGl4ZWxhdGUoMTIpJTBBJTIwJTIwLmthbGVpZCgpJTBBKSUwQS5zY3JvbGxYKDEwKSUwQS5jb2xvcmFtYSgpJTBBLmx1bWEoKSUwQS5yZXBlYXRYKDQpJTBBLnJlcGVhdFkoNCklMEEubW9kdWxhdGUoJTBBJTIwJTIwb3NjKDElMkMlMjAtMC45JTJDJTIwMzAwKSUwQSklMEEuc2NhbGUoMiklMEEub3V0KCklMEE=)
+[example\_11](https://hydra.ojack.xyz/?sketch_id=example_11)
 
 ![](./images/11.png "")
 
@@ -138,7 +138,7 @@ http://zachkrall.online/
 	.scale(2)
 	.out()
 
-[example\_14](https://hydra-editor-v1.glitch.me/?sketch_id=example_14&code=JTJGJTJGJTIwYnklMjBPbGl2aWElMjBKYWNrJTBBJTJGJTJGJTIwJTQwX29qYWNrXyUwQSUwQW9zYygyMCUyQyUyMDAuMDElMkMlMjAxLjEpJTBBJTA5LmthbGVpZCg1KSUwQSUwOS5jb2xvcigyLjgzJTJDMC45MSUyQzAuMzkpJTBBJTA5LnJvdGF0ZSgwJTJDJTIwMC4xKSUwQSUwOS5tb2R1bGF0ZShvMCUyQyUyMCgpJTIwJTNEJTNFJTIwbW91c2UueCUyMColMjAwLjAwMDMpJTBBJTA5LnNjYWxlKDEuMDEpJTBBJTIwJTIwJTA5Lm91dChvMCk=)
+[example\_14](https://hydra.ojack.xyz/?sketch_id=example_14)
 
 ![](./images/14.png "")
 
@@ -154,7 +154,7 @@ by Olivia Jack
 	  	.out(o0)
 
 
-[example\_15](https://hydra-editor-v1.glitch.me/?sketch_id=example_15&code=JTJGJTJGJTIwYnklMjBPbGl2aWElMjBKYWNrJTBBJTJGJTJGJTIwaHR0cHMlM0ElMkYlMkZvamFjay5naXRodWIuaW8lMEElMEFvc2MoMTAwJTJDJTIwMC4wMSUyQyUyMDEuNCklMEElMDkucm90YXRlKDAlMkMlMjAwLjEpJTBBJTA5Lm11bHQob3NjKDEwJTJDJTIwMC4xKS5tb2R1bGF0ZShvc2MoMTApLnJvdGF0ZSgwJTJDJTIwLTAuMSklMkMlMjAxKSklMEElMDkuY29sb3IoMi44MyUyQzAuOTElMkMwLjM5KSUwQSUyMCUyMC5vdXQobzAp)
+[example\_15](https://hydra.ojack.xyz/?sketch_id=example_15)
 
 ![](./images/15.png "")
 
@@ -167,7 +167,7 @@ https://ojack.github.io
 	.color(2.83,0.91,0.39)
 	.out(o0)
 
-[example\_16](https://hydra-editor-v1.glitch.me/?sketch_id=example_16&code=JTJGJTJGJTIwYnklMjBPbGl2aWElMjBKYWNrJTBBJTJGJTJGJTIwaHR0cHMlM0ElMkYlMkZvamFjay5naXRodWIuaW8lMEElMEFvc2MoNCUyQyUyMDAuMSUyQyUyMDAuOCkuY29sb3IoMS4wNCUyQzAlMkMlMjAtMS4xKS5yb3RhdGUoMC4zMCUyQyUyMDAuMSkucGl4ZWxhdGUoMiUyQyUyMDIwKS5tb2R1bGF0ZShub2lzZSgyLjUpJTJDJTIwKCklMjAlM0QlM0UlMjAxLjUlMjAqJTIwTWF0aC5zaW4oMC4wOCUyMColMjB0aW1lKSkub3V0KG8wKQ==)
+[example\_16](https://hydra.ojack.xyz/?sketch_id=example_16)
 
 ![](./images/16.png "")
 
@@ -176,7 +176,7 @@ https://ojack.github.io
 
 	osc(4, 0.1, 0.8).color(1.04,0, -1.1).rotate(0.30, 0.1).pixelate(2, 20).modulate(noise(2.5), () => 1.5 * Math.sin(0.08 * time)).out(o0)
 	
-[example\_17](https://hydra-editor-v1.glitch.me/?sketch_id=example_17&code=JTJGJTJGJTIwbW9pcmUlMEElMkYlMkYlMjBieSUyME9saXZpYSUyMEphY2slMEElMkYlMkYlMjB0d2l0dGVyJTNBJTIwJTQwX29qYWNrXyUwQSUwQXBhdHRlcm4lMjAlM0QlMjAoKSUyMCUzRCUzRSUyMG9zYygyMDAlMkMlMjAwKS5rYWxlaWQoMjAwKS5zY2FsZSgxJTJDJTIwMC40KSUwQSUyRiUyRiUwQXBhdHRlcm4oKSUwQSUyMCUyMC5zY3JvbGxYKDAuMSUyQyUyMDAuMDEpJTBBJTIwJTIwLm11bHQocGF0dGVybigpKSUwQSUyMCUyMC5vdXQoKQ==)
+[example\_17](https://hydra.ojack.xyz/?sketch_id=example_17)
 
 ![](./images/17.png "")
 
@@ -191,7 +191,7 @@ twitter: @_ojack_
 	  .out()
 	  
 	  
-[example\_18](https://hydra-editor-v1.glitch.me/?sketch_id=example_18&code=JTJGJTJGJTIwYnklMjBPbGl2aWElMjBKYWNrJTBBJTJGJTJGJTIwaHR0cHMlM0ElMkYlMkZvamFjay5naXRodWIuaW8lMEElMEFvc2MoNiUyQyUyMDAlMkMlMjAwLjgpJTBBJTIwJTIwLmNvbG9yKDEuMTQlMkMlMjAwLjYlMkMuODApJTBBJTIwJTIwLnJvdGF0ZSgwLjkyJTJDJTIwMC4zKSUwQSUyMCUyMC5waXhlbGF0ZSgyMCUyQyUyMDEwKSUwQSUyMCUyMC5tdWx0KG9zYyg0MCUyQyUyMDAuMDMpLnRocmVzaCgwLjQpLnJvdGF0ZSgwJTJDJTIwLTAuMDIpKSUwQSUyMCUyMC5tb2R1bGF0ZVJvdGF0ZShvc2MoMjAlMkMlMjAwKS50aHJlc2goMC4zJTJDJTIwMC42KSUyQyUyMCgpJTIwJTNEJTNFJTIwMC4xJTIwJTJCJTIwbW91c2UueCUyMColMjAwLjAwMiklMEElMjAlMjAub3V0KG8wKQ==)
+[example\_18](https://hydra.ojack.xyz/?sketch_id=example_18)
 
 ![](./images/18.png "")
 
